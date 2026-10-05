@@ -1,3 +1,8 @@
+<!-- 
+Brief:
+This file is used to give context for AI agents, don't worry about this because the use of AI is not aloud for this assignment 
+-->
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know

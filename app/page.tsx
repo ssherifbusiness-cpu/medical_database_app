@@ -1,3 +1,7 @@
+/*
+Brief:
+This is the main file for our application
+*/
 import Image from "next/image";
 
 export default function Home() {

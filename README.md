@@ -1,3 +1,8 @@
+<!--
+Brief:
+This is a README file. It's type is .md which stands for "markdown" Markdown files are plain text files that allow for some limited styling. The README.md file is used by github to display information about the codebase. It gets displayed at root of the project under the project folder view in github. You can view the syntax styling rules of markdown files here https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+-->
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
