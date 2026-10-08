@@ -1,5 +1,5 @@
 ## How do I access the site?
-
+npm run dev
 http://localhost:3000/
 
 ## How do I branch?
