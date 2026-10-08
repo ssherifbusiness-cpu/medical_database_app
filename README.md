@@ -1,5 +1,8 @@
-## Creating branches for backlog items (issues)
+## How do I access the site?
 
+http://localhost:3000/
+
+## How do I branch?
 
 To create a branch for a backlog item (issue) from the Github Project board, you can navigate to the issue on the [Project Board](https://github.com/users/ssherifbusiness-cpu/projects/1)
 
