@@ -33,6 +33,19 @@ export default function LoginPage() {
 
     if (error) setErrorMessage(error.message)
   }
+  async function signInWithGoogle() {
+    setErrorMessage('')
+
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    })
+
+    if (error) setErrorMessage(error.message)
+  }
+
 
   async function signOut() {
     const { error } = await supabase.auth.signOut()
@@ -60,9 +73,14 @@ export default function LoginPage() {
           <button onClick={signOut}>Sign Out</button>
         </>
       ) : (
-        <button onClick={signInWithGitHub}>
-          Sign In with GitHub
-        </button>
+        <div>
+          <button onClick={signInWithGitHub}>
+            Sign In with GitHub
+          </button>
+          <button onClick={signInWithGoogle}>
+            Sign In with Google
+          </button>
+        </div>
       )}
     </main>
   )
