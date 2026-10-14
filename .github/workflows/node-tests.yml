@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' 
+          node-version: '22' 
           cache: 'npm'# Caches dependencies to make builds faster
 
       # Step 3: Clean install exact project dependencies
