@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f0f6ff;
+  --foreground: #1e293b;
 }
 
 @theme inline {
@@ -23,4 +23,57 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
 }
+.login-box {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: #f8fafc;
+    justify-content: center;
+}
+.login-title {
+    font-weight: bold;
+    color: blue;
+    margin-bottom: 10px;
+    font-size: 20px;
+
+}
+.login {
+    background: white;
+    text-align: center;
+    padding: 40px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px;
+
+
+}
+.login-form {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+}
+.login-email {
+    padding: 14px;
+    border: 1px solid black;
+    border-radius: 8px;
+    
+
+}
+.login-password {
+    padding: 14px;
+    border: 1px solid black;
+    border-radius: 8px;
+
+}
+.submit-button {
+    padding: 14px;
+    background: blue;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+
+}
+
