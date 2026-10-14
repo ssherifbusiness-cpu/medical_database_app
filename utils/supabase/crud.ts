@@ -1,4 +1,4 @@
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "./server";
 
 // TODO: Maybe incorporate names into getPatient as well
 // Read one single patient given id
