@@ -1,0 +1,35 @@
+name: Node.js Automated Tests
+
+# Trigger this workflow on every pull request targeting the main branch
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-tests:
+    name: Install and Test
+    runs-on: ubuntu-latest # Uses a clean Linux container to run tests
+
+    steps:
+      # Step 1: Clone your repository code onto the runner
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Install Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22' 
+          cache: 'npm'# Caches dependencies to make builds faster
+
+      # Step 3: Clean install exact project dependencies
+      - name: Install Dependencies
+        run: npm ci
+
+      # Step 4: Run the test command with secrets injected
+      - name: Run Test Suite
+        run: npm test
+        env:
+          # Maps GitHub Secrets straight into process.env for tests
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
