@@ -3,6 +3,8 @@
 :root {
   --background: #f0f6ff;
   --foreground: #1e293b;
+  --color-action: #512884;
+  --color-text: #000000;
 }
 
 @theme inline {
@@ -12,12 +14,16 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --color-action: #512884;
+    --color-text:#ffff;
   }
 }
+
 
 body {
   background: var(--background);
@@ -25,12 +31,15 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
+
+
 .login-box {
     min-height: 100vh;
     display: flex;
     align-items: center;
     background: #f8fafc;
     justify-content: center;
+    padding: 20px;
 }
 .login-title {
     font-weight: bold;
@@ -47,13 +56,27 @@ body {
     width: 100%;
     max-width: 400px;
     box-shadow: 0 10px 30px;
+    border: 2px solid black;
 
 
+}
+.login-subtitle {
+    font-size: 12px;
+    color: lightblue;
+    margin-bottom: 20px;
 }
 .login-form {
     display: flex;
     gap: 16px;
     flex-direction: column;
+}
+
+.login-status {
+    color: #36454F;
+}
+
+.login-success {
+    color: #36454F;
 }
 .login-email {
     padding: 14px;
@@ -75,5 +98,15 @@ body {
     font-size: 10px;
     font-weight: bold;
 
+}
+
+
+
+button {
+  border:solid;
+  border-radius:2em;
+  padding:0.5em 1em 0.5em 1em;
+  background: var(--color-action);
+  color: #ffff;
 }
 
