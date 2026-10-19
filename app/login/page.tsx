@@ -37,7 +37,7 @@ export default function LoginPage() {
     setErrorMessage('')
 
     const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'github',
+      provider: 'google',
       options: {
         redirectTo: `${window.location.origin}/auth/callback`,
       },
