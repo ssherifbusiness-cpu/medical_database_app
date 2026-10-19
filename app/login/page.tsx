@@ -33,6 +33,19 @@ export default function LoginPage() {
 
     if (error) setErrorMessage(error.message)
   }
+  async function signInWithGoogle() {
+    setErrorMessage('')
+
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'github',
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    })
+
+    if (error) setErrorMessage(error.message)
+  }
+
 
   async function signOut() {
     const { error } = await supabase.auth.signOut()
@@ -45,32 +58,36 @@ export default function LoginPage() {
   }
 
   return (
-      <main className="login-box">
-    <div className="login">
-      <h1 className="login-title">Medical Database Application</h1>
-      <h2 className="login-subtitle">Supabase OAuth Authentication</h2>
+    <main className="login-box">
+      <div className="login">
+        <h1 className="login-title">Medical Database Application</h1>
+        <h2 className="login-subtitle">Supabase OAuth Authentication</h2>
 
-      {errorMessage && <p className="login-error" role="alert">{errorMessage}</p>}
+        {errorMessage && <p className="login-error" role="alert">{errorMessage}</p>}
 
-      {loading ? (
-        <p className="login-status">Checking login status...</p>
-      ) : email ? (
-                      
-        <div className="login-form">
-          <h3 className="login-success">Successfully signed in!</h3>
-          <p className="login-status">Welcome, {email}</p>
-          <button className="submit-button" onClick={signOut}>Sign Out</button>
-                          
-                  </div>
-              ) : (
-              <div className="login-form">
-              <p className="login-status">Sign into medical database</p>
-              
-        <button className="submit-button" onClick={signInWithGitHub}>
-          Sign In with GitHub
-              </button>
+        {loading ? (
+          <p className="login-status">Checking login status...</p>
+        ) : email ? (
+
+          <div className="login-form">
+            <h3 className="login-success">Successfully signed in!</h3>
+            <p className="login-status">Welcome, {email}</p>
+            <button className="submit-button" onClick={signOut}>Sign Out</button>
+
           </div>
-      )}
+        ) : (
+          <div className="login-form">
+            <p className="login-status">Sign into medical database</p>
+
+            <button className="submit-button" onClick={signInWithGitHub}>
+              Sign In with GitHub
+            </button>
+            <button className="submit-button" onClick={signInWithGoogle}>
+              Sign In with Google
+            </button>
+
+          </div>
+        )}
       </div>
     </main>
   )
