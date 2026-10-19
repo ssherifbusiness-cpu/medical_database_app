@@ -1,12 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f0f6ff;
+  --foreground: #1e293b;
   --color-action: #512884;
-  --color-text:#0000;
+  --color-text: #000000;
 }
 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -16,11 +24,83 @@
   }
 }
 
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
 }
+
+
+.login-box {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: #f8fafc;
+    justify-content: center;
+    padding: 20px;
+}
+.login-title {
+    font-weight: bold;
+    color: blue;
+    margin-bottom: 10px;
+    font-size: 20px;
+
+}
+.login {
+    background: white;
+    text-align: center;
+    padding: 40px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px;
+    border: 2px solid black;
+
+
+}
+.login-subtitle {
+    font-size: 12px;
+    color: lightblue;
+    margin-bottom: 20px;
+}
+.login-form {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+}
+
+.login-status {
+    color: #36454F;
+}
+
+.login-success {
+    color: #36454F;
+}
+.login-email {
+    padding: 14px;
+    border: 1px solid black;
+    border-radius: 8px;
+    
+
+}
+.login-password {
+    padding: 14px;
+    border: 1px solid black;
+    border-radius: 8px;
+
+}
+.submit-button {
+    padding: 14px;
+    background: blue;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+
+}
+
+
 
 button {
   border:solid;
@@ -29,3 +109,4 @@ button {
   background: var(--color-action);
   color: #ffff;
 }
+
