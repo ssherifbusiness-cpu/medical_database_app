@@ -110,3 +110,122 @@ button {
   color: #ffff;
 }
 
+
+/*MAIN MENU STUFF*/
+
+.home-container {
+    min-height: 50vh;
+    background: white;
+    color: black;
+    
+}
+
+.home-navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: white;
+    justify-content: space-between;
+    border-bottom: 8px solid black;
+
+}
+
+.home-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: blue;
+}
+
+.home-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+
+.home-main-box {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: #f0e8ff;
+    border-bottom: 6px solid black;
+}
+
+.home-main-content {
+    max-width: 700px;
+}
+
+.home-main-content h2 {
+    font-size: 40px;
+    font-weight: bold;
+    color: blue;
+    margin-bottom: 20px;
+}
+
+.home-description {
+    font-size: 16px;
+    color: black;
+    line-height: 1.8;
+}
+
+.home-about {
+    text-align: center;
+    padding: 60px 20px;
+    
+    background: ;
+    border-bottom: 6px solid black;
+}
+
+.home-about h2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: blue;
+    margin-bottom: 20px;
+    
+}
+
+.home-about p {
+        
+        font-size: 16px;
+        color: black;
+        
+        justify-content: center;
+        text-align: center;
+        
+        
+    }
+
+
+.home-features {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+}
+
+.home-features h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.home-bottom-features {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 15px;
+}
+
+.home-feature-box {
+    background: white;
+    padding: 30px;
+    border: 2px solid black;
+    border-radius: 6px;
+    width: 300px;
+    box-shadow: 0 5px 10px grey;
+}
+
