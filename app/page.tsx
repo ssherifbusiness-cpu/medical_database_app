@@ -10,6 +10,7 @@ export default function Home() {
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
         <h1 className="bg-red-300 text-xl">Welcome To MYTHICorp</h1>
         <button><Link href="/login">login</Link></button>
+        <Link className="text-blue-500 hover:text-blue-700" href="/privacypolicy">Privacy Policy</Link>
       </main>
     </div>
   );
