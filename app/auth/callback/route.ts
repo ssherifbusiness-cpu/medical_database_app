@@ -12,7 +12,7 @@ export async function GET(request: Request) {
     })
 
     return NextResponse.redirect(
-      `${origin}/login?error=missing_code`
+      `${origin}/?error=missing_code`
     )
   }
 
@@ -24,11 +24,11 @@ export async function GET(request: Request) {
     console.error('OAuth code exchange failed:', error.message)
 
     return NextResponse.redirect(
-      `${origin}/login?error=code_exchange_failed`
+      `${origin}/?error=code_exchange_failed`
     )
   }
 
   console.log('OAuth authentication successful!')
 
-  return NextResponse.redirect(`${origin}/login`)
+  return NextResponse.redirect(`${origin}/`)
 }
