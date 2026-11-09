@@ -1,52 +1,29 @@
-/*
-Brief:
-This is the main file for our application
-*/
-import Link from "next/link";
+import { redirect } from 'next/navigation';
+import { createClient } from '@/utils/supabase/server';
 
-export default function Home() {
-  return (
-      <main className="home-container">
-          <nav className="home-navbar">
-              <h1 className="home-title">MYTHICorp</h1>
-              <div className="home-links">
-                  <a href="#about">About</a>
-                  <a href="#features">Features</a>
-                  <Link href="/login" className="home-login">Login</Link>
+export default async function Home() {
+  const supabase = await createClient();
 
-              </div>
-          </nav>
+  const { data: { user }, error } = await supabase.auth.getUser();
+  if (error) {
+    console.error("Authentication Failed", error.message);
+  }
+  if (!user) {
+    redirect('/welcome');
+  }
 
+  const role = user.app_metadata?.role;
 
-          <section className="home-main-box">
-              <div className="home-main-content">
-                  <h2>Welcome to MYTHICorp</h2>
-                  <p className="home-description">
-                  A secure medical database where accessing your information has never been easier and simple.
-                  </p>
-              </div>
-          </section>
-
-          <section id="about" className="home-about">
-              <h2>About MYTHICorp</h2>
-              <p>MYTHICorp is focused on an organized and secured platform there is very simple and user-friendly for all to use.</p>
-
-          </section>
-
-          <section id="features" className="home-features">
-              <h2>Our Features</h2>
-              <div className="home-bottom-features">
-                  <div className="home-feature-box">
-                      <h3>Secure Authentication</h3>
-                  <p>Secure sign in with either Google or Github with Supabase authentication.</p>
-                  </div>
-
-                  <div className="home-feature-box">
-                  <h3>Database Management</h3>
-                  <p>Medical data records stored with encryption and secured.</p>
-                  </div>
-              </div>
-          </section>
-      </main>
-  );
+  switch (role) {
+    case 'admin':
+      redirect('/employee_portal/admin_portal');
+    case 'doctor':
+      redirect('/employee_portal/doctor_portal');
+    case 'receptionist':
+      redirect('/employee_portal/receptionist_portal');
+    case 'patient':
+      redirect('/patient_portal');
+    default:
+      redirect('/welcome')
+  }
 }

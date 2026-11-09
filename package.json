@@ -12,9 +12,11 @@
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.3",
+    "lucide-react": "^1.70.0",
     "next": "^16.3.8",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "simple-icons": "^16.36.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -23,11 +25,11 @@
     "@types/react-dom": "^19",
     "dotenv": "^18.0.8",
     "eslint": "^9",
-    "eslint-config-next": "16.3.8",
+    "eslint-config-next": "^16.3.8",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vite-tsconfig-paths": "^4.3.2",
-    "vitest": "^1.6.1"
+    "vitest": "^4.1.12"
   },
   "allowScripts": {
     "unrs-resolver@1.12.2": true,
