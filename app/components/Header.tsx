@@ -9,8 +9,8 @@ export default async function Header() {
   const { data: { user } } = await supabase.auth.getUser()
   const avatar = user?.user_metadata?.avatar_url
   return (
-    <header className="header">
-      <nav className="p-2 flex items-center justify-between">
+    <header>
+      <nav className="header b-2 p-2 flex items-center justify-between">
         <Link href="/">MythiCorp</Link>
         <div>
           {user ? (
