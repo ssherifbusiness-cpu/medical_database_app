@@ -23,8 +23,8 @@
     --background: #0a0a0a;
     --background-offset: #1c1c1c;
     --foreground: #ededed;
-    --color-action: #512884;
-    --color-action-darker: #3d1e63;
+    --color-action: #a77bdf;
+    --color-action-darker: #7041a6;
     --color-text: #ffff;
   }
 }
@@ -190,75 +190,58 @@ td {
 /*MAIN MENU STUFF*/
 
 .home-container {
-  min-height: 50vh;
-  background: white;
-  color: black;
+  width: 100%;
+  min-height: 80vh;
+  background: var(--background);
+  color: var(--foreground);
 
 }
 
-.home-navbar {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  background: white;
-  justify-content: space-between;
-  border-bottom: 8px solid black;
-
-}
-
-.home-title {
-  font-size: 30px;
-  font-weight: bold;
-  color: blue;
-}
-
-.home-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
 
 
 
 .home-main-box {
-  min-height: 100px;
+    width: 100%;
+  min-height: 215px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 40px 20px;
-  background: #f0e8ff;
-  border-bottom: 6px solid black;
+  background: var(--background-offset);
+  border-bottom: 6px solid var(--foreground);
 }
 
 .home-main-content {
-  max-width: 700px;
+  max-width: 800px;
 }
 
+.home-main-content h1,
 .home-main-content h2 {
   font-size: 40px;
   font-weight: bold;
-  color: blue;
+  color: var(--color-action);
   margin-bottom: 20px;
 }
 
 .home-description {
   font-size: 16px;
-  color: black;
+  color: var(--foreground);
   line-height: 1.8;
 }
 
 .home-about {
+  width: 100%;
   text-align: center;
-  padding: 60px 20px;
-
-  border-bottom: 6px solid black;
+  padding: 70px 20px;
+  background: var(--background);
+  border-bottom: 6px solid var(--foreground);
 }
 
 .home-about h2 {
   font-size: 30px;
   font-weight: bold;
-  color: blue;
+  color: var(--color-action);
   margin-bottom: 20px;
 
 }
@@ -266,25 +249,27 @@ td {
 .home-about p {
 
   font-size: 16px;
-  color: black;
-
+  color: var(--foreground);
+  max-width: 800px;
   justify-content: center;
   text-align: center;
+  margin: 0 auto;
 
 
 }
 
 
 .home-features {
+  width: 100%;
   text-align: center;
   padding: 40px 20px;
-  background: white;
+  background: var(--background);
 }
 
 .home-features h2 {
   font-size: 26px;
   font-weight: bold;
-  color: black;
+  color: var(--foreground);
   margin-bottom: 20px;
 }
 
@@ -296,10 +281,17 @@ td {
 }
 
 .home-feature-box {
-  background: white;
+  background: var(--background-offset);
   padding: 30px;
-  border: 2px solid black;
+  border: 2px solid var(--foreground);
   border-radius: 6px;
   width: 300px;
   box-shadow: 0 5px 10px grey;
+}
+
+.home-feature-box h3 {
+    font-size: 21px;
+    font-weight: bold;
+    color: var(--color-action);
+    margin-bottom: 10px;
 }
