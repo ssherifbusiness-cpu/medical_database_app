@@ -80,7 +80,7 @@ export default function ProfileMenu({ avatar, email }: ProfileMenuProps) {
             )}
             <p className="text-xs">{email}</p>
           </div>
-          <button onClick={signOut} className="action_button w-fit">Sign Out</button>
+          <button onClick={signOut} className="action_button z-3">Sign Out</button>
         </div>
       )}
     </div>
