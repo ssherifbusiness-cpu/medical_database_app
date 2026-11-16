@@ -5,6 +5,7 @@ import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 
 import { siGithub, siGoogle } from 'simple-icons'
+import console from "console";
 
 export default function LoginMenu() {
   const [open, setOpen] = useState(false);
@@ -15,15 +16,21 @@ export default function LoginMenu() {
   const [errorMessage, setErrorMessage] = useState('')
   let signingIn = false; 
 
-  function checkIfSigningIn() {
-    if (!signingIn) {
-      signingIn = true;
-      // disable buttons and show loading indicator here? 
-      return true;
+  async function doubleClickGuard(authService: Function) {
+    if (signingIn) { return; }
+    signingIn = true;
+    // disable buttons and show loading indicator here? yes
+    console.log('Signing in...');
     }
-    return false;
+    try {
+      await authService(); 
+    } catch(error) {
+      // not sure what to put here. Will check later
+    } finally {
+      signingIn = false; 
+    }
   }
-  
+
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -72,7 +79,7 @@ export default function LoginMenu() {
   async function signInWithGoogle() {
     setErrorMessage('')
 
-    const { error } = await supabase.auth.signInWithOAuth({
+    const { error } = await supabase.auth.signInWithOAuth({   // I think I need to throw an error here for the doubleClickProtection
       provider: 'google',
       options: {
         redirectTo: `${window.location.origin}/auth/callback`,
@@ -156,7 +163,9 @@ export default function LoginMenu() {
           <div className="flex gap-2 w-max">
           </div>
           <div className="flex gap-4 w-fit p-2">
-            <button className="w-8 h-8 bg-[var(--color-action)] flex items-center justify-center rounded-full" onClick={signInWithGitHub}>
+            <button className="w-8 h-8 bg-[var(--color-action)] flex items-center justify-center rounded-full" onClick={signInWithGitHub
+              // disable in here? disable = true??
+            }>
               <svg
                 viewBox="0 0 24 24"
                 width="40"
