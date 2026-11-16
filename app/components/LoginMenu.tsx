@@ -18,13 +18,24 @@ export default function LoginMenu() {
   const supabase = createClient()
   const [errorMessage, setErrorMessage] = useState('')
   const [signingIn, setSigningIn] = useState(false);
-  let [loading, setLoading] = useState(true);
+  // let [loading, setLoading] = useState(true);
+
+  function renderSignInLoader() {
+  if (!signingIn) return null;
+
+  return (
+    <div role="status" className="flex items-center gap-2">
+      <ClipLoader size={16} aria-hidden="true" />
+      <span>Signing in…</span>
+    </div>
+  );
+}
 
   async function doubleClickGuard(authService: Function) {
     if (signingIn) { return; }
     setSigningIn(true);
     // show loading indicator here? 
-    setLoading(!loading); 
+    // setLoading(!loading); 
     console.log('Signing in...');       // this gets logged when pressing the button. 
     
     try {
@@ -32,7 +43,7 @@ export default function LoginMenu() {
     } catch(error) {
       // not sure what to put here. Will check later
       setSigningIn(false); 
-    }
+    } 
   }
 
   useEffect(() => {
@@ -78,7 +89,6 @@ export default function LoginMenu() {
     if (error) {
       setErrorMessage(error.message)
       throw error; 
-      return
     }
   }
   async function signInWithGoogle() {
@@ -168,8 +178,7 @@ export default function LoginMenu() {
           <div className="flex gap-2 w-max">
           </div>
           <div className="flex gap-4 w-fit p-2">
-            <button className="w-8 h-8 bg-[var(--color-action)] flex items-center justify-center rounded-full" onClick={signInWithGitHub // disabled={signingIn}; 
-            }>
+            <button className="w-8 h-8 bg-[var(--color-action)] flex items-center justify-center rounded-full" onClick={() => doubleClickGuard(signInWithGitHub)} disabled={signingIn}>
               
               <svg
                 viewBox="0 0 24 24"
@@ -179,8 +188,7 @@ export default function LoginMenu() {
                 aria-hidden="true"><path d={siGithub.path} />
               </svg>
             </button>
-            <button className="w-8 h-8 bg-[var(--color-action)] flex items-center justify-center rounded-full" onClick={() => doubleClickGuard(signInWithGoogle) // disabled={signingIn};
-            }>
+            <button className="w-8 h-8 bg-[var(--color-action)] flex items-center justify-center rounded-full" onClick={() => doubleClickGuard(signInWithGoogle)} disabled={signingIn}>
               <svg
                 viewBox="0 0 24 24"
                 width="40"
@@ -190,6 +198,7 @@ export default function LoginMenu() {
               </svg>
             </button>
           </div>
+          {renderSignInLoader()}
         </div>
       )
       }
