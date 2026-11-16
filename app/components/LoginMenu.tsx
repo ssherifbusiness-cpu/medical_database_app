@@ -31,7 +31,6 @@ export default function LoginMenu() {
       await authService(); 
     } catch(error) {
       // not sure what to put here. Will check later
-    } finally {
       setSigningIn(false); 
     }
   }
