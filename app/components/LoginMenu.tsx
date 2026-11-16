@@ -13,7 +13,17 @@ export default function LoginMenu() {
   const router = useRouter()
   const supabase = createClient()
   const [errorMessage, setErrorMessage] = useState('')
+  let signingIn = false; 
 
+  function checkIfSigningIn() {
+    if (!signingIn) {
+      signingIn = true;
+      // disable buttons and show loading indicator here? 
+      return true;
+    }
+    return false;
+  }
+  
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
