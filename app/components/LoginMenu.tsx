@@ -5,7 +5,10 @@ import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 
 import { siGithub, siGoogle } from 'simple-icons'
-import console from "console";
+//import console from "console";
+
+import { ClipLoader } from 'react-spinners';    // Jacob S using this. use "npm install react-spinners" in the terminal. 
+
 
 export default function LoginMenu() {
   const [open, setOpen] = useState(false);
@@ -14,20 +17,22 @@ export default function LoginMenu() {
   const router = useRouter()
   const supabase = createClient()
   const [errorMessage, setErrorMessage] = useState('')
-  let signingIn = false; 
+  const [signingIn, setSigningIn] = useState(false);
+  let [loading, setLoading] = useState(true);
 
   async function doubleClickGuard(authService: Function) {
     if (signingIn) { return; }
-    signingIn = true;
-    // disable buttons and show loading indicator here? yes
-    console.log('Signing in...');
-    }
+    setSigningIn(true);
+    // show loading indicator here? 
+    setLoading(!loading); 
+    console.log('Signing in...');       // this gets logged when pressing the button. 
+    
     try {
       await authService(); 
     } catch(error) {
       // not sure what to put here. Will check later
     } finally {
-      signingIn = false; 
+      setSigningIn(false); 
     }
   }
 
@@ -73,13 +78,14 @@ export default function LoginMenu() {
 
     if (error) {
       setErrorMessage(error.message)
+      throw error; 
       return
     }
   }
   async function signInWithGoogle() {
     setErrorMessage('')
 
-    const { error } = await supabase.auth.signInWithOAuth({   // I think I need to throw an error here for the doubleClickProtection
+    const { error } = await supabase.auth.signInWithOAuth({   // I need to throw an error here for the doubleClickProtection
       provider: 'google',
       options: {
         redirectTo: `${window.location.origin}/auth/callback`,
@@ -87,7 +93,7 @@ export default function LoginMenu() {
     })
 
     if (error) setErrorMessage(error.message);
-
+    if (error) throw error;                                   // add this to all authenticators 
   }
 
   async function signInWithEmail(event: React.FormEvent<HTMLFormElement>) {
@@ -163,9 +169,9 @@ export default function LoginMenu() {
           <div className="flex gap-2 w-max">
           </div>
           <div className="flex gap-4 w-fit p-2">
-            <button className="w-8 h-8 bg-[var(--color-action)] flex items-center justify-center rounded-full" onClick={signInWithGitHub
-              // disable in here? disable = true??
+            <button className="w-8 h-8 bg-[var(--color-action)] flex items-center justify-center rounded-full" onClick={signInWithGitHub // disabled={signingIn}; 
             }>
+              
               <svg
                 viewBox="0 0 24 24"
                 width="40"
@@ -174,7 +180,8 @@ export default function LoginMenu() {
                 aria-hidden="true"><path d={siGithub.path} />
               </svg>
             </button>
-            <button className="w-8 h-8 bg-[var(--color-action)] flex items-center justify-center rounded-full" onClick={signInWithGoogle}>
+            <button className="w-8 h-8 bg-[var(--color-action)] flex items-center justify-center rounded-full" onClick={() => doubleClickGuard(signInWithGoogle) // disabled={signingIn};
+            }>
               <svg
                 viewBox="0 0 24 24"
                 width="40"
