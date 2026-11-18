@@ -6,6 +6,10 @@ import Link from "next/link";
 
 export default function Home() {
     return (
-        
+        <div> 
+            <p>
+            receptionist test text
+            </p>
+        </div>
     );
 }
