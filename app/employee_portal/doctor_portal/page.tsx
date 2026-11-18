@@ -1,16 +1,17 @@
-import { redirect } from 'next/navigation';
-import { createClient } from '@/utils/supabase/server';
+import { redirect } from "next/navigation";
+import { createClient } from "@/utils/supabase/server";
 
-export default async function AdminPortal() {
-  const supabase = await createClient();
+export default async function DoctorPortal() {
+    const supabase = await createClient();
 
-  const { data: { user }, error } = await supabase.auth.getUser();
+    const { data: { user }, error } = await supabase.auth.getUser();
 
-  if (error || !user) {
-    redirect('/')
+    if (error || !user) {
+        redirect('/welcome')
+    }
+
+    if (user.app_metadata?.role !== 'doctor') {
+        redirect('/');
+    }
+    redirect ('/employee_portal/doctor_portal/Dashboard');
   }
-  if (user.app_metadata?.role !== 'doctor') {
-    redirect('/');
-  }
-}
-
