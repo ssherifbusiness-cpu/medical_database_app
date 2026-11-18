@@ -84,7 +84,7 @@ export default function ChangePerms() {
                 <select
                   value={user.app_metadata?.role ?? ''}
                   onChange={(e) => updateRole(user.id, e.target.value)}>
-                  <option value="">Unassigned</option>
+                  <option value="" disabled>Unassigned</option>
                   <option value="patient">Patient</option>
                   <option value="doctor">Doctor</option>
                   <option value="receptionist">Receptionist</option>
