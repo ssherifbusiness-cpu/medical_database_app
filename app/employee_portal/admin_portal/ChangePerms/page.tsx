@@ -1,6 +1,7 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import NewUser from '../components/NewUser';
+import { Trash } from 'lucide-react'
 
 type User = {
   id: string;
@@ -25,18 +26,22 @@ type User = {
 export default function ChangePerms() {
   const [users, setUsers] = useState<User[]>([]);
 
-  useEffect(() => {
-    async function fetchUsers() {
-      const response = await fetch('/api/admin/users/role');
-      const result = await response.json();
-      if (response.ok) {
-        setUsers(result.users);
-      } else {
-        console.error(result.error);
-      }
+  const fetchUsers = useCallback(async () => {
+    const response = await fetch('/api/admin/users/role')
+    const result = await response.json()
+    if (response.ok) {
+      setUsers(result.users);
+    } else {
+      console.error(result.error)
     }
-    fetchUsers();
   }, [])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetchUsers()
+    }, 0)
+    return () => clearTimeout(timer)
+  }, [fetchUsers])
 
 
   async function updateRole(userId: string, role: string) {
@@ -70,17 +75,27 @@ export default function ChangePerms() {
     );
   }
 
+  async function deleteUser(userId: string) {
+    const response = await fetch(`/api/admin/users/${userId}`, { method: "DELETE" })
+
+    const result = await response.json()
+    if (!response.ok) {
+      console.error(result.error);
+      return;
+    }
+    setUsers((prev) => prev.filter((user) => user.id !== userId))
+  }
 
   return (
     <div className="flex flex-col gap-4">
       <div>User Management</div>
       <NewUser />
-      <table>
+      <table className="w-fit">
         <tbody>
           {users.map((user) => (
             <tr key={user.id}>
-              <td>{user.email}</td>
-              <td>
+              <td className="">{user.email}</td>
+              <td className="">
                 <select
                   value={user.app_metadata?.role ?? ''}
                   onChange={(e) => updateRole(user.id, e.target.value)}>
@@ -90,6 +105,11 @@ export default function ChangePerms() {
                   <option value="receptionist">Receptionist</option>
                   <option value="admin">Admin</option>
                 </select>
+              </td>
+              <td className="">
+                <button onClick={() => deleteUser(user.id)} className="bg-red-400 hover:bg-red-300 p-2 rounded">
+                  <Trash />
+                </button>
               </td>
             </tr>
           ))}
