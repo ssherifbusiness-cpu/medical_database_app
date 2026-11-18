@@ -43,10 +43,6 @@ button:hover {
 
 .card {
   position: fixed;
-  top: 25%;
-  right: 25%;
-  left: 25%;
-  bottom: 25%;
   gap: 10em;
   background: var(--background);
   padding: 2em;
@@ -57,8 +53,8 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  height: 50%;
+  width: 75%;
+  height: 75%;
 }
 
 .menu {
@@ -201,7 +197,7 @@ td {
 
 
 .home-main-box {
-    width: 100%;
+  width: 100%;
   min-height: 215px;
   display: flex;
   align-items: center;
@@ -290,8 +286,8 @@ td {
 }
 
 .home-feature-box h3 {
-    font-size: 21px;
-    font-weight: bold;
-    color: var(--color-action);
-    margin-bottom: 10px;
+  font-size: 21px;
+  font-weight: bold;
+  color: var(--color-action);
+  margin-bottom: 10px;
 }
