@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Sidebar() {
   return (
-    <aside className="receptionist-sidebar">
+    <aside className="receptionist-sidebar overflow-scroll">
       <h2>MYTHICorp</h2>
       <p>Receptionist Portal</p>
 
