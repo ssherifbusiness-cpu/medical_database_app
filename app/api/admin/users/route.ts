@@ -38,6 +38,7 @@ export async function POST(request: Request) {
   const { data, error } = await admin.auth.admin.createUser({
     email: email.trim(),
     password,
+    email_confirm: true,
     app_metadata: {
       role,
     },

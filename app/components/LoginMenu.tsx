@@ -21,15 +21,15 @@ export default function LoginMenu() {
   // let [loading, setLoading] = useState(true);
 
   function renderSignInLoader() {
-  if (!signingIn) return null;
+    if (!signingIn) return null;
 
-  return (
-    <div role="status" className="flex items-center gap-2">
-      <ClipLoader size={16} aria-hidden="true" />
-      <span>Signing in…</span>
-    </div>
-  );
-}
+    return (
+      <div role="status" className="flex items-center gap-2">
+        <ClipLoader size={16} aria-hidden="true" />
+        <span>Signing in…</span>
+      </div>
+    );
+  }
 
   async function doubleClickGuard(authService: Function) {
     if (signingIn) { return; }
@@ -37,13 +37,13 @@ export default function LoginMenu() {
     // show loading indicator here? 
     // setLoading(!loading); 
     console.log('Signing in...');       // this gets logged when pressing the button. 
-    
+
     try {
-      await authService(); 
-    } catch(error) {
+      await authService();
+    } catch (error) {
       // not sure what to put here. Will check later
-      setSigningIn(false); 
-    } 
+      setSigningIn(false);
+    }
   }
 
   useEffect(() => {
@@ -88,7 +88,7 @@ export default function LoginMenu() {
 
     if (error) {
       setErrorMessage(error.message)
-      throw error; 
+      throw error;
     }
   }
   async function signInWithGoogle() {
@@ -179,7 +179,7 @@ export default function LoginMenu() {
           </div>
           <div className="flex gap-4 w-fit p-2">
             <button className="w-8 h-8 bg-[var(--color-action)] flex items-center justify-center rounded-full" onClick={() => doubleClickGuard(signInWithGitHub)} disabled={signingIn}>
-              
+
               <svg
                 viewBox="0 0 24 24"
                 width="40"

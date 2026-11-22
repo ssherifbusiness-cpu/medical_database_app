@@ -41,7 +41,7 @@ export default function ProfileMenu({ avatar, email }: ProfileMenuProps) {
       return
     }
 
-    router.replace('/');
+    router.replace('/welcome');
     setOpen(false);
     router.refresh();
 
