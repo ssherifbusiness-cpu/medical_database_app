@@ -315,16 +315,16 @@ td {
     top: 0;
 }
 
-.receptionist-sidebar h2{
-    color: var(--color-action);
-    font-size: 24px;
-    margin-bottom: 4px;
-}
+    .receptionist-sidebar h2 {
+        color: var(--color-action);
+        font-size: 24px;
+        margin-bottom: 4px;
+    }
 
-.receptionist-sidebar p {
-    font-size: 14px;
-    margin-bottom: 30px;
-}
+    .receptionist-sidebar p {
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
 
 .receptionist-nav-bar {
     display: flex;
@@ -332,27 +332,26 @@ td {
     gap: 10px;
 }
 
-.receptionist-nav-bar a {
-    color: var(--foreground);
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 15px;
+    .receptionist-nav-bar a {
+        color: var(--foreground);
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 15px;
+    }
 
-}
+        .receptionist-nav-bar a:hover {
+            background-color: var(--color-action);
+            color: white;
+        }
 
-.receptionist-nav-bar a:hover{
-    background-color: var(--color-action);
-    color: white;
-}
-
-.receptionist-main{
+.receptionist-main {
     flex: 1;
     min-width: 0;
     padding: 40px;
     width: auto;
     max-width: none;
-
 }
+
 .receptionist-section {
     width: 100%;
     display: block;
@@ -360,15 +359,15 @@ td {
 }
 
 
-.receptionist-section h1 {
-    font-size: 30px;
-    margin-bottom: 10px;
+    .receptionist-section h1 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
 
-}
-.receptionist-section > p {
-    font-size: 15px;
-    margin-bottom: 30px;
-}
+    .receptionist-section > p {
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
 
 
 
@@ -391,23 +390,21 @@ td {
     min-height: 180px;
     width: 100%;
     min-width: 0;
-
 }
 
-.dashboard-box:hover {
-    border-color: var(--color-action);
-    transform: translateY(-3px);
+    .dashboard-box:hover {
+        border-color: var(--color-action);
+        transform: translateY(-3px);
+    }
 
-}
-.dashboard-box h3 {
-    font-size: 19px;
-    margin-bottom: 10px;
-}
+    .dashboard-box h3 {
+        font-size: 19px;
+        margin-bottom: 10px;
+    }
 
-.dashboard-box p {
-    font-size: 14px;
-
-}
+    .dashboard-box p {
+        font-size: 14px;
+    }
 
 .dashboard-information {
     display: grid;
@@ -415,7 +412,6 @@ td {
     gap: 20px;
     width: 100%;
     max-width: none;
-
 }
 
 .information-card {
@@ -426,17 +422,13 @@ td {
     min-height: 150px;
 }
 
-.information-card h3 {
-    font-size: 15px;
-    margin-bottom: 12px;
+    .information-card h3 {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
 
-}
-
-.information-card p {
-    font-size: 30px;
-    font-weight: bold;
-    color: var(--color-action);
-}
-
-
-
+    .information-card p {
+        font-size: 30px;
+        font-weight: bold;
+        color: var(--color-action);
+    }
