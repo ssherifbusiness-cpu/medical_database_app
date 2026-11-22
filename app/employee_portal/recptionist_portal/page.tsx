@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { createClient } from '@/utils/supabase/server';
 
-export default async function AdminPortal() {
+export default async function ReceptionistPortal() {
   const supabase = await createClient();
 
   const { data: { user }, error } = await supabase.auth.getUser();
@@ -12,5 +12,8 @@ export default async function AdminPortal() {
   if (user.app_metadata?.role !== 'receptionist') {
     redirect('/');
   }
+  return (
+    <div>Home</div>
+  )
 }
 

@@ -12,5 +12,8 @@ export default async function AdminPortal() {
   if (user.app_metadata?.role !== 'admin') {
     redirect('/');
   }
+  return (
+    <div>Home</div>
+  )
 }
 
