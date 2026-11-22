@@ -7,11 +7,11 @@ export default function Sidebar() {
       <p>Receptionist Portal</p>
 
       <div className="receptionist-nav-bar">
-        <a href="#dashboard">Dashboard</a>
-        <a href="#checkin">Patient Check-In</a>
-        <a href="#appointments">Appointments</a>
-        <a href="#patientsearch">Patient Search</a>
-        <a href="#patientregister">Patient Registration</a>
+        <Link href="/employee_portal/receptionist_portal">Dashboard</Link>
+        <Link href="/employee_portal/receptionist_portal/patient_check_in">Patient Check-In</Link>
+        <Link href="/employee_portal/receptionist_portal/appointments">Appointments</Link>
+        <Link href="/employee_portal/receptionist_portal/patient_search">Patient Search</Link>
+        <Link href="/employee_portal/receptionist_portal/patient_registration">Patient Registration</Link>
       </div>
     </aside>
   );
