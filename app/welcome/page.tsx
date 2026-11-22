@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 
 export default function Welcome() {
@@ -8,6 +7,9 @@ export default function Welcome() {
             <section className="home-main-box">
                 <div className="home-main-content">
                     <h2>Welcome to MYTHICorp</h2>
+                    <Link href="/patient-portal">
+                        Go to Patient Portal
+                     </Link>
                     <p className="home-description">
                         A secure medical database where accessing your
                         information has never been easier and simpler.
